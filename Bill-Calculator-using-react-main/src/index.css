@@ -1,0 +1,190 @@
+/* Reset and base styles */
+* {
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: gray;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 50px 20px;
+  color: #333;
+}
+
+/* Main container */
+.TipCalculator {
+  background-color: #ffffffcc;
+  backdrop-filter: blur(10px);
+  padding: 40px 30px;
+  border-radius: 20px;
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 480px;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/* 🎨 ADDED: Main title style */
+.main-title {
+  text-align: center;
+  color: #4527a0;
+  margin-bottom: 30px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+/* Control wrapper for spacing */
+.form-control {
+  margin-bottom: 20px;
+}
+
+/* Inputs and selects */
+input,
+select {
+  width: 100%;
+  padding: 12px 15px;
+  border-radius: 12px;
+  border: 2px solid #c5cae9;
+  background: #f3f4ff;
+  font-size: 1rem;
+  margin-top: 6px;
+  transition: border 0.3s;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: #7e57c2;
+  box-shadow: 0 0 8px #d1c4e9;
+}
+
+/* Labels */
+label {
+  font-weight: 600;
+  display: block;
+  margin-bottom: 6px;
+  color: #4527a0;
+}
+
+p {
+  display: flex;
+  justify-content: center;
+}
+/* Output section */
+h3 {
+  margin-top: 25px;
+  font-size: 1.2rem;
+  color: #2e7d32;
+  background-color: #e8f5e9;
+  border-left: 5px solid #66bb6a;
+  padding: 15px 20px;
+  border-radius: 10px;
+}
+
+/* Reset button */
+button {
+  margin-top: 20px;
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(135deg, #7b1fa2, #512da8);
+  border: none;
+  color: white;
+  font-size: 1rem;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background: linear-gradient(135deg, #6a1b9a, #4527a0);
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.output-box {
+  margin-top: 25px;
+  padding: 20px 24px;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  border-left: 6px solid transparent;
+  background-clip: padding-box;
+  position: relative;
+  animation: slideIn 0.4s ease-in-out;
+}
+
+.output-box::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 100%;
+  border-radius: 16px 0 0 16px;
+  background: linear-gradient(to bottom, #4caf50, #81c784);
+}
+
+.output-title {
+  font-size: 1.2rem;
+  display: flex;
+  justify-content: center;
+  font-weight: 600;
+  color: #2e7d32;
+  margin-bottom: 8px;
+}
+
+.output-text {
+  font-size: 1rem;
+  color: #333;
+}
+
+/* Style for the horizontal rule */
+.divider {
+  border: 0;
+  height: 2px;
+  background-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 0.25),
+    rgba(0, 0, 0, 0)
+  );
+  margin: 12px 0;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.output-text strong {
+  margin-left: 4px;
+}
+
+.plus {
+  display: inline-block;
+  padding: 0 10px;
+  font-style: italic;
+  font-weight: bold;
+  color: #555;
+}

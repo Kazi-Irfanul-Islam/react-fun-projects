@@ -1,0 +1,352 @@
+/*
+ * File: styles.css
+ * Project: Eat-n-Split (Aesthetic Overhaul)
+ * Description: CSS for the new animated title.
+ */
+
+/* 1. Import a font from Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap");
+/*
+ * File: styles.css
+ * Project: Eat-n-Split (Aesthetic Overhaul)
+ * Description: Added a centered state for the app container.
+ */
+
+/* App Container */
+.app {
+  /* ... your existing .app styles ... */
+  display: grid;
+  grid-template-columns: 36rem 46rem;
+  column-gap: 4rem;
+  align-items: start;
+  backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.6);
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: var(--shadow-md);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  /* Add a smooth transition for the layout change */
+  transition: all 0.5s;
+}
+
+/* This new rule will apply when the split bill form is closed */
+.app.app-centered {
+  grid-template-columns: 36rem; /* Define only one column */
+  justify-content: center; /* Center that single column */
+}
+@keyframes waveIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-30px) scale(0.8);
+  }
+  70% {
+    transform: translateY(5px) scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* 3. Style the main title container */
+/*
+ * File: styles.css
+ * Project: Eat-n-Split (Aesthetic Overhaul)
+ * Description: Added a fallback color for better browser compatibility.
+ */
+
+.main-title {
+  font-family: "Poppins", sans-serif;
+  font-size: 6rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 3rem;
+
+  /* 1. Add this fallback color */
+  color: var(--color-dark);
+
+  /* 2. The gradient will override the color in supported browsers */
+  background-image: linear-gradient(
+    45deg,
+    var(--color-dark),
+    var(--color-medium)
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  text-shadow: 2px 2px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* 4. Style each letter (span) and apply the animation */
+.main-title span {
+  display: inline-block; /* Allows transform to work */
+  opacity: 0; /* Start hidden */
+  animation: waveIn 0.8s var(--animation-curve) forwards;
+}
+
+/* 5. Add a staggered delay to each letter to create the wave */
+.main-title span:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.main-title span:nth-child(2) {
+  animation-delay: 0.15s;
+}
+.main-title span:nth-child(3) {
+  animation-delay: 0.2s;
+}
+.main-title span:nth-child(4) {
+  animation-delay: 0.25s;
+}
+.main-title span:nth-child(5) {
+  animation-delay: 0.3s;
+}
+.main-title span:nth-child(6) {
+  animation-delay: 0.35s;
+}
+.main-title span:nth-child(7) {
+  animation-delay: 0.4s;
+}
+.main-title span:nth-child(8) {
+  animation-delay: 0.45s;
+}
+.main-title span:nth-child(9) {
+  animation-delay: 0.5s;
+}
+.main-title span:nth-child(10) {
+  animation-delay: 0.55s;
+}
+.main-title span:nth-child(11) {
+  animation-delay: 0.6s;
+}
+
+:root {
+  --color-lightest: #fff4e6;
+  --color-light: #ffe8cc;
+  --color-medium: #ffa94d;
+  --color-dark: #ff922b;
+  --color-text: #495057;
+  --color-dark-text: #343a40;
+  --color-green: #66a80f;
+  --color-red: #e03131;
+  --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.1);
+  --animation-curve: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* General & Body Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+body {
+  height: 100vh;
+  color: var(--color-text);
+  background-image: linear-gradient(
+    to top right,
+    var(--color-lightest),
+    #ffffff
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(1rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* App Container */
+.app {
+  min-height: 66vh;
+  display: grid;
+  grid-template-columns: 36rem 46rem;
+  column-gap: 4rem;
+  align-items: start;
+  backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.6);
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: var(--shadow-md);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Buttons */
+.button {
+  background-color: var(--color-medium);
+  color: var(--color-dark-text);
+  padding: 1rem 1.5rem;
+  border: none;
+  border-radius: 7px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s var(--animation-curve);
+  box-shadow: var(--shadow-sm);
+  letter-spacing: 0.5px;
+}
+
+.button:hover {
+  background-color: var(--color-dark);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.button:active {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Sidebar & Friend List */
+.sidebar ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  font-size: 1.4rem;
+  margin-bottom: 2rem;
+}
+
+.sidebar li {
+  display: grid;
+  grid-template-columns: 4.8rem 1fr auto;
+  align-items: center;
+  column-gap: 1.6rem;
+  padding: 1.2rem;
+  border-radius: 9px;
+  transition: all 0.4s var(--animation-curve);
+  animation: fadeIn 0.5s var(--animation-curve) backwards;
+}
+
+/* Staggered animation for the initial list */
+.sidebar li:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.sidebar li:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.sidebar li:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.selected,
+.sidebar li:hover {
+  background-color: var(--color-lightest);
+  transform: scale(1.02);
+  box-shadow: var(--shadow-sm);
+}
+
+.sidebar li img {
+  border-radius: 50%;
+  width: 100%;
+  grid-row: span 2;
+  box-shadow: var(--shadow-sm);
+}
+
+.sidebar li h3 {
+  grid-row: 1;
+  grid-column: 2;
+  font-size: 1.6rem;
+}
+
+.sidebar li p {
+  grid-row: 2;
+  grid-column: 2;
+}
+
+.sidebar li .button {
+  grid-row: span 2;
+  grid-column: 3;
+}
+
+.sidebar > .button {
+  float: right;
+  margin-right: 1.2rem;
+}
+
+.green {
+  color: var(--color-green);
+}
+.red {
+  color: var(--color-red);
+}
+
+/* Forms */
+form {
+  font-size: 1.6rem;
+  display: grid;
+  align-items: center;
+  gap: 1.2rem;
+  background-color: var(--color-lightest);
+  border-radius: 9px;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--color-light);
+  /* Animation for when forms appear */
+  animation: fadeIn 0.5s var(--animation-curve);
+}
+
+.form-add-friend {
+  grid-template-columns: 1fr 1.5fr;
+  margin-bottom: 1.6rem;
+  padding: 1.2rem;
+}
+.form-split-bill {
+  grid-template-columns: 1fr 12rem;
+  padding: 3.2rem 4rem;
+}
+
+label {
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+input,
+select {
+  font-family: inherit;
+  color: inherit;
+  font-size: 1.5rem;
+  padding: 1rem;
+  text-align: center;
+  border: 1px solid var(--color-light);
+  border-radius: 7px;
+  background-color: #fff;
+  transition: all 0.3s;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: var(--color-dark);
+  box-shadow: 0 0 0 4px var(--color-light);
+}
+
+form .button {
+  margin-top: 0.6rem;
+  grid-column: 2;
+}
+
+form h2 {
+  grid-column: 1 / -1;
+  font-size: 2.2rem;
+  text-transform: uppercase;
+  letter-spacing: -0.5px;
+  margin-bottom: 1.6rem;
+  text-align: center;
+  color: var(--color-dark-text);
+  font-weight: 600;
+}
