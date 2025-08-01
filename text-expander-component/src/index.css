@@ -1,0 +1,118 @@
+/*
+ * File: style.css
+ * Project: TextExpander
+ * Description: Complete, elegant, and animated styles for the component.
+ * Date: August 1, 2025
+ */
+
+/* =================================
+   1. GLOBAL STYLES & FONT
+   ================================= */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --color-primary: #1098ad;
+  --color-text: #343a40;
+  --color-background: #f1f3f5;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 5px 15px rgba(0, 0, 0, 0.07);
+  --animation-timing: 500ms ease-in-out;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  color: var(--color-text);
+  background-color: var(--color-background);
+  line-height: 1.7;
+  padding: 32px;
+}
+
+/* =================================
+   2. MAIN CONTAINER STYLING
+   ================================= */
+.text-expander {
+  margin-bottom: 24px;
+  background: #fff;
+  padding: 24px 28px;
+  border-radius: 12px;
+  box-shadow: var(--shadow-sm);
+  /* Transition for the hover effect */
+  transition: all 0.3s ease-out;
+}
+
+/* Enhanced hover effect on the container */
+.text-expander:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-3px);
+}
+
+/* Special style for the .box variant */
+.text-expander.box {
+  border-left: 5px solid var(--color-primary);
+}
+
+/* =================================
+   3. THE BUTTON STYLING
+   ================================= */
+.text-expander button {
+  background: none;
+  border: none;
+  font: inherit;
+  font-weight: 500;
+  cursor: pointer;
+  margin-left: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: all 0.2s;
+}
+
+/* Enhanced hover effect on the button */
+.text-expander button:hover {
+  color: var(--color-primary) !important; /* Overrides inline style */
+}
+
+/* =================================
+   4. ANIMATED ICON
+   ================================= */
+/* Create the chevron icon using a pseudo-element */
+.text-expander button::after {
+  content: "";
+  display: block;
+  width: 7px;
+  height: 7px;
+  border-bottom: 2px solid currentColor;
+  border-right: 2px solid currentColor;
+  /* Start by pointing down */
+  transform: rotate(45deg);
+  transition: transform 0.3s ease-in-out;
+}
+
+/* When the container is expanded, rotate the icon to point up */
+.text-expander.expanded button::after {
+  transform: rotate(-135deg);
+}
+
+/* =================================
+   5. EXPAND/COLLAPSE TEXT ANIMATION
+   ================================= */
+/* The span needs to be a block-level element to animate its height */
+.text-expander span {
+  display: block;
+  overflow: hidden;
+  transition: max-height var(--animation-timing);
+
+  /* Collapsed state: height for approx. 3 lines of text */
+  max-height: 5.1em; /* (1.7 line-height * 3 lines) */
+}
+
+/* When the parent container is expanded, set a large max-height */
+.text-expander.expanded span {
+  max-height: 500px; /* A value large enough to fit any content */
+}
