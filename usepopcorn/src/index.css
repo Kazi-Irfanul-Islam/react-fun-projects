@@ -1,0 +1,391 @@
+/*
+ * ╔═══╗╔═══╗╔═══╗╔═══╗╔═══╗
+ * ║ M ║║ O ║║ D ║║ E ║║ R ║
+ * ╚═══╝╚═══╝╚═══╝╚═══╝╚═══╝
+ * ╔═══╗╔═══╗
+ * ║ U ║║ I ║
+ * ╚═══╝╚═══╝
+ */
+
+:root {
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+
+  /* Colors */
+  --color-primary-accent: #00a8e8;
+  --color-primary-accent-dark: #007ea7;
+
+  --color-background-darker: #121212;
+  --color-background: #1a1a1a;
+  --color-background-light: #2c2c2c;
+  --color-background-lighter: #3e3e3e;
+
+  --color-text-primary: #f0f0f0;
+  --color-text-secondary: #a0a0a0;
+
+  --color-red: #e5383b;
+  --color-red-dark: #b71c1c;
+
+  /* Spacing & Style */
+  --border-radius: 12px;
+  --transition-speed: 0.25s;
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* === 1. Base & Reset === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-text-primary);
+  background-color: var(--color-background-darker);
+  padding: 2.4rem;
+}
+
+/* === 2. Custom Scrollbar === */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-background);
+  border-radius: var(--border-radius);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-background-lighter);
+  border-radius: var(--border-radius);
+  border: 2px solid var(--color-background);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-text-secondary);
+}
+
+/* === 3. Keyframe Animations === */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ✅ NEW: Animation for the details panel */
+@keyframes slideInFromRight {
+  from {
+    opacity: 0.5;
+    transform: translateX(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* === 4. General Layout === */
+.nav-bar {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 2rem;
+  padding: 1.6rem 3.2rem;
+  background-color: var(--color-background);
+  border-radius: var(--border-radius);
+}
+
+.main {
+  margin-top: 2.4rem;
+  height: calc(100vh - 7.2rem - 3 * 2.4rem);
+  display: flex;
+  gap: 2.4rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.box {
+  width: 42rem;
+  background-color: var(--color-background);
+  border-radius: var(--border-radius);
+  position: relative;
+  overflow-y: auto;
+  height: 70vh;
+  max-height: 65rem;
+}
+
+/* === 5. Components === */
+
+/* Logo & Search */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+.logo span {
+  font-size: 3.6rem;
+}
+.logo h1 {
+  font-size: 2.4rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.search {
+  border: 1px solid var(--color-background-light);
+  padding: 1.1rem 1.6rem;
+  font-size: 1.6rem;
+  border-radius: var(--border-radius);
+  width: 100%;
+  max-width: 40rem;
+  justify-self: center;
+  transition: all var(--transition-speed) ease;
+  color: var(--color-text-primary);
+  background-color: var(--color-background-light);
+}
+.search::placeholder {
+  color: var(--color-text-secondary);
+}
+.search:focus {
+  outline: none;
+  border-color: var(--color-primary-accent);
+  box-shadow: 0 0 0 3px var(--color-primary-accent-dark);
+}
+
+.num-results {
+  font-size: 1.6rem;
+  color: var(--color-text-secondary);
+}
+
+/* List Views */
+.list {
+  list-style: none;
+  padding: 0.8rem 0;
+}
+.list li {
+  position: relative;
+  display: grid;
+  grid-template-columns: 4.8rem 1fr;
+  align-items: center;
+  gap: 1.6rem;
+  padding: 1.6rem 2.4rem;
+  border-bottom: 1px solid var(--color-background-light);
+  animation: slideIn 0.5s ease-out forwards;
+}
+.list img {
+  width: 100%;
+  grid-row: 1 / -1;
+  border-radius: 4px;
+}
+.list h3 {
+  font-size: 1.8rem;
+  font-weight: 500;
+}
+.list div {
+  display: flex;
+  align-items: center;
+  gap: 2.4rem;
+}
+.list p {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: 1.4rem;
+  color: var(--color-text-secondary);
+}
+.list.list-movies li {
+  cursor: pointer;
+  transition: all var(--transition-speed) ease-in-out;
+  border-left: 4px solid transparent;
+}
+
+.list.list-movies li:hover {
+  background-color: var(--color-background-light);
+  border-left: 4px solid var(--color-primary-accent);
+  transform: translateX(5px);
+}
+
+/* Buttons */
+.btn-toggle {
+  position: absolute;
+  top: 0.8rem;
+  right: 0.8rem;
+  height: 2.8rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: none;
+  background-color: var(--color-background-light);
+  color: var(--color-text-primary);
+  font-size: 1.6rem;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 999;
+  transition: all var(--transition-speed);
+}
+.btn-toggle:hover {
+  background-color: var(--color-primary-accent);
+}
+
+.btn-delete {
+  position: absolute;
+  right: 2.4rem;
+  height: 2.4rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: none;
+  background-color: var(--color-red);
+  color: var(--color-text-primary);
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all var(--transition-speed);
+}
+.btn-delete:hover {
+  background-color: var(--color-red-dark);
+  transform: scale(1.1);
+}
+
+/* Watched Summary */
+.summary {
+  padding: 2.2rem 3.2rem;
+  border-radius: var(--border-radius);
+  background-color: var(--color-background-light);
+  box-shadow: var(--shadow);
+}
+.summary h2 {
+  text-transform: uppercase;
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+  color: var(--color-text-secondary);
+}
+.summary div {
+  display: flex;
+  align-items: center;
+  gap: 2.4rem;
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+.summary p {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  color: var(--color-text-primary);
+}
+
+/* Movie Details */
+/* ✅ ADDED: Animation property to the details panel */
+.details {
+  line-height: 1.6;
+  font-size: 1.4rem;
+  animation: slideInFromRight 0.4s ease-out;
+}
+
+.details header {
+  display: flex;
+  background-color: var(--color-background-light);
+}
+.details section {
+  padding: 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.details img {
+  width: 15rem;
+  height: auto;
+  object-fit: cover;
+}
+.details-overview {
+  width: 100%;
+  padding: 2.4rem 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+}
+.details-overview h2 {
+  font-size: 2.8rem;
+  font-weight: 700;
+}
+.details-overview p {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  color: var(--color-text-secondary);
+}
+.details-overview p span {
+  color: #fcc419; /* Star color */
+}
+
+.rating {
+  background-color: var(--color-background-light);
+  border-radius: var(--border-radius);
+  padding: 2rem 2.4rem;
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.6rem;
+}
+
+.btn-add {
+  background-color: var(--color-primary-accent);
+  color: var(--color-text-primary);
+  border: none;
+  border-radius: 10rem;
+  font-size: 1.4rem;
+  padding: 1.2rem 2.4rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all var(--transition-speed);
+  width: 100%;
+  margin-top: 0.6rem;
+}
+.btn-add:hover {
+  background-color: var(--color-primary-accent-dark);
+  transform: translateY(-2px);
+}
+
+.btn-back {
+  position: absolute;
+  top: 1.2rem;
+  left: 1.2rem;
+  height: 3.2rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: none;
+  background-color: var(--color-background-lighter);
+  color: var(--color-text-primary);
+  box-shadow: var(--shadow);
+  font-size: 1.8rem;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-speed);
+}
+.btn-back:hover {
+  background-color: var(--color-primary-accent);
+}
+
+/* Loader & Error */
+.loader,
+.error {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 500;
+  padding: 4.8rem;
+  color: var(--color-text-secondary);
+}
